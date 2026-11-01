@@ -266,7 +266,9 @@
       const img = stills[to];
       // Never fade into a picture that is still downloading on a slow connection.
       img.loading = "eager";
-      await Promise.race([img.decode().catch(() => {}), new Promise((resolve) => window.setTimeout(resolve, 4000))]);
+      if (!(img.complete && img.naturalWidth)) {
+        await Promise.race([img.decode().catch(() => {}), new Promise((resolve) => window.setTimeout(resolve, 2500))]);
+      }
       img.style.zIndex = "1";
       show(to, false);
       window.setTimeout(() => {
