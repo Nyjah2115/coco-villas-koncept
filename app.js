@@ -336,6 +336,7 @@
 
     function render(arrived) {
       const scene = byId[state.current];
+      section.dataset.scene = scene.id;
       countEl.textContent = pad(scene.index + 1);
       if (arrived) {
         titleEl.textContent = scene.title;

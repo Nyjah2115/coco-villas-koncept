@@ -269,24 +269,64 @@ html {
   padding-bottom: clamp(72px, 9vw, 120px);
 }
 
-.tr-head {
-  padding: clamp(48px, 7vw, 88px) 0 clamp(32px, 4vw, 52px);
-  text-align: center;
-}
-
-.tr-head .cv-sub {
-  margin-inline: auto;
+/* The whole house, edge to edge and uncropped, is the first thing on the page. The title sits
+   on the evening sky and steps aside once the camera moves on. */
+.tr-hero {
+  position: relative;
 }
 
 .tr-card {
   position: relative;
-  width: min(1240px, calc(100% - 2 * var(--cv-gutter)));
-  margin-inline: auto;
+  width: 100%;
   overflow: hidden;
   aspect-ratio: 16 / 9;
-  border-radius: 28px;
   background: #111;
   isolation: isolate;
+}
+
+.tr-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.3) 30%, rgba(0, 0, 0, 0) 52%);
+  transition: opacity 0.6s ease;
+}
+
+.tr-head {
+  position: absolute;
+  top: clamp(32px, 5.5vw, 88px);
+  left: 50%;
+  z-index: 7;
+  width: min(760px, calc(100% - 2 * var(--cv-gutter)));
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 1px 24px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  transform: translateX(-50%);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s var(--cv-ease);
+}
+
+.tr-head .cv-eyebrow {
+  color: var(--cv-gold-hi);
+}
+
+.tr-head .cv-sub {
+  margin-inline: auto;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.tr:not([data-scene="bok"]) .tr-head,
+.tr[data-busy="true"] .tr-head {
+  opacity: 0;
+  transform: translate(-50%, -12px);
+}
+
+.tr:not([data-scene="bok"]) .tr-shade,
+.tr[data-busy="true"] .tr-shade {
+  opacity: 0;
 }
 
 .tr-layers,
@@ -1097,9 +1137,33 @@ video.tr-layer {
     display: none;
   }
 
-  .tr-card {
-    aspect-ratio: 4 / 3;
-    border-radius: 20px;
+  /* Phones: the whole house on top, the title below it, always visible. */
+  .tr-shade {
+    display: none;
+  }
+
+  .tr-head,
+  .tr:not([data-scene="bok"]) .tr-head,
+  .tr[data-busy="true"] .tr-head {
+    position: static;
+    width: auto;
+    padding: 28px var(--cv-gutter) 4px;
+    color: var(--cv-ink);
+    text-shadow: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .tr-head .cv-eyebrow {
+    color: var(--cv-gold-text);
+  }
+
+  .tr-head .cv-sub {
+    color: var(--cv-mute);
+  }
+
+  .tr-head .cv-display {
+    font-size: 48px;
   }
 
   .tr-map {
