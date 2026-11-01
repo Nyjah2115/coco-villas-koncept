@@ -3,7 +3,7 @@
 (() => {
   "use strict";
 
-  document.documentElement.classList.add("sg-js");
+  document.documentElement.classList.add("cv-js");
 
   const CLIP_WAIT_MS = 9000;
   const CLIP_WATCHDOG_MS = 11000;
@@ -144,7 +144,7 @@
       img.width = 1920;
       img.height = 1080;
       img.decoding = "async";
-      img.sizes = "(max-width: 1023px) 100vw, 120vw";
+      img.sizes = "(max-width: 1240px) 100vw, 1240px";
       img.srcset = `assets/scenes/${scene.id}-1280.webp 1280w, assets/scenes/${scene.id}-1920.webp 1920w`;
       img.src = `assets/scenes/${scene.id}-1920.webp`;
       if (scene.id !== state.current) img.loading = "lazy";
@@ -351,8 +351,8 @@
       const goSpots = scene.spots.filter((spot) => spot.to);
       const notes = scene.spots.filter((spot) => spot.note);
       actionsEl.replaceChildren(
-        ...goSpots.map((spot) => actionButton(`${spot.label} →`, "go", () => go(spot.to), state.loading === spot.to)),
-        ...(scene.index > 0 ? [actionButton("← Wstecz", "back", () => step(-1), false)] : []),
+        ...goSpots.map((spot) => actionButton(spot.label, "go", () => go(spot.to), state.loading === spot.to)),
+        ...(scene.index > 0 ? [actionButton("‹ Wstecz", "back", () => step(-1), false)] : []),
       );
       // On phones the spots are hidden, so their notes join the caption as plain text.
       notesEl.hidden = !(compactQuery.matches && notes.length);

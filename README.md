@@ -11,7 +11,7 @@ W tym folderze uruchom `python3 -m http.server 8000` i otwórz http://localhost:
 ## Co gdzie jest
 
 - `index.html`: treść strony
-- `styles.css`: wygląd (czerń, złoto, Cormorant Garamond i Manrope; baza wspólna z konceptem Saeng)
+- `styles.css`: wygląd w stylu apple.com: jasne tło, SF Pro na urządzeniach Apple (Inter na pozostałych), odrobina złota
 - `app.js`: spacer po willi (miejsca, punkty i przejścia w `SCENES` i `CLIPS`), formularz
 - `assets/scenes`: zdjęcia sześciu miejsc spaceru (klatki z przejść, 1920 i 1280 px)
 - `assets/video`: przejścia kamery do przodu i od tyłu (`-r`), wersja na komputer i na telefon (`-m`)

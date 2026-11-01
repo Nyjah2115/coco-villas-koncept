@@ -6,7 +6,7 @@
     <title>Coco Villas. Prywatne wille z basenem w Rawai, Phuket</title>
     <meta name="description" content="Cztery prywatne wille z basenem w Rawai na Phuket. Trzy sypialnie z łazienkami, zadaszony garaż, pełne umeblowanie. Przejdź się po willi." />
     <meta name="robots" content="noindex, nofollow" />
-    <meta name="theme-color" content="#0C0B09" />
+    <meta name="theme-color" content="#FFFFFF" />
     <meta property="og:title" content="Coco Villas. Prywatne wille z basenem w Rawai, Phuket" />
     <meta property="og:description" content="Cztery prywatne wille z basenem w Rawai. Przejdź się po willi, pokój po pokoju." />
     <meta property="og:type" content="website" />
@@ -17,108 +17,106 @@
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
+    <!-- Apple devices use their own SF Pro; everyone else gets Inter, the closest open match. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@300;400;500;600&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <script src="app.js" defer></script>
   </head>
-  <body class="sg-body">
+  <body class="cv">
     <p class="cv-concept">Koncept strony od <a href="https://dawid-webdesign.pl" rel="noopener">Dawid Webdesign</a><span> · wizualizacje i dane: Coco Villas, Twins Real Estate</span></p>
 
+    <header class="cv-nav">
+      <nav class="cv-nav-in" aria-label="Nawigacja główna">
+        <a href="#spacer" class="cv-brand">Coco Villas</a>
+        <ul class="cv-nav-links">
+          <li><a href="#spacer">Spacer</a></li>
+          <li><a href="#willa">Willa</a></li>
+          <li><a href="#wnetrza">Wnętrza</a></li>
+          <li><a href="#rawai">Rawai</a></li>
+        </ul>
+        <a href="#kontakt" class="cv-btn cv-btn-sm">Zapytaj</a>
+      </nav>
+    </header>
+
     <main>
-      <section id="spacer" class="tr" data-busy="false" aria-label="Spacer po willi">
-        <div class="tr-stage">
+      <section id="spacer" class="tr" data-busy="false" aria-labelledby="hero-title">
+        <div class="cv-wrap tr-head">
+          <p class="cv-eyebrow">Rawai · Phuket</p>
+          <h1 id="hero-title" class="cv-display">Coco Villas</h1>
+          <p class="cv-sub">Cztery prywatne wille z basenem. Kliknij i przejdź się po jednej z nich.</p>
+        </div>
+
+        <div class="tr-card">
           <div class="tr-layers" data-layers></div>
-          <div class="tr-scrim" aria-hidden="true"></div>
           <div class="tr-spots" data-spots></div>
+        </div>
 
-          <div class="tr-bar">
-            <nav class="sg-nav" aria-label="Nawigacja główna">
-              <a href="#spacer" class="sg-brand">
-                <span class="sg-brand-text"><span class="sg-brand-word">Coco Villas</span><span class="sg-brand-sub">Rawai · Phuket</span></span>
-              </a>
-              <ul class="sg-nav-links">
-                <li><a href="#willa">Willa</a></li>
-                <li><a href="#wnetrza">Wnętrza</a></li>
-                <li><a href="#rawai">Rawai</a></li>
-                <li><a href="#kontakt">Twins</a></li>
-              </ul>
-              <a href="#kontakt" class="sg-cta">Zapytaj o willę</a>
-            </nav>
-          </div>
-
+        <div class="cv-wrap tr-info">
           <div class="tr-caption">
             <p class="tr-count" aria-hidden="true"><span data-count>01</span> / <span data-total>06</span></p>
-            <h1 class="tr-title" data-title tabindex="-1">Od strony ogrodu</h1>
+            <h2 class="tr-title" data-title tabindex="-1">Od strony ogrodu</h2>
             <p class="tr-text" data-text></p>
             <p class="tr-text tr-notes" data-notes hidden></p>
             <div class="tr-actions" data-actions></div>
           </div>
-
           <ol class="tr-map" aria-label="Miejsca w willi" data-map></ol>
         </div>
-        <p class="sg-sr" aria-live="polite" data-live></p>
+        <p class="cv-sr" aria-live="polite" data-live></p>
       </section>
 
-      <section id="willa" class="cv-intro" aria-labelledby="willa-title">
-        <div class="sg-wrap cv-intro-grid">
-          <div data-reveal>
-            <p class="sg-eyebrow">Coco Villas</p>
-            <h2 id="willa-title" class="sg-h2">Cztery wille, <em>jedna</em> cisza</h2>
+      <section id="willa" class="cv-section cv-intro" aria-labelledby="willa-title">
+        <div class="cv-wrap">
+          <h2 id="willa-title" class="cv-statement" data-reveal>Cztery prywatne wille w spokojnej części Rawai. <span>Każda z basenem, trzema sypialniami z łazienkami i zadaszonym garażem. W pełni umeblowana, więc przyjeżdżasz z walizką i zostajesz.</span></h2>
+          <dl class="cv-facts" data-reveal>
+            <div><dt>prywatne wille</dt><dd>4</dd></div>
+            <div><dt>sypialnie z łazienkami</dt><dd>3</dd></div>
+            <div><dt>m² powierzchni mieszkalnej</dt><dd>384–394</dd></div>
+          </dl>
+          <div class="cv-price" data-reveal>
+            <div>
+              <p class="cv-price-label">Cena przedsprzedażowa od</p>
+              <p class="cv-price-value">24&nbsp;000&nbsp;000 THB</p>
+              <p class="cv-price-pln">ok. 2,64 mln zł</p>
+            </div>
+            <ul class="cv-incl">
+              <li>Basen z przelewem przy salonie</li>
+              <li>Zadaszony garaż</li>
+              <li>Pełne umeblowanie w cenie</li>
+              <li>Płatność w ratach</li>
+            </ul>
           </div>
-          <div data-reveal>
-            <p class="sg-lead">Coco Villas to cztery prywatne wille w spokojnej części Rawai, na południu Phuket. Każda ma własny basen, trzy sypialnie z łazienkami i zadaszony garaż.</p>
-            <p class="sg-lead">Wille są w pełni umeblowane. Przyjeżdżasz z walizką i zostajesz.</p>
-          </div>
-        </div>
-        <dl class="sg-wrap cv-facts" data-reveal>
-          <div><dt>prywatne wille</dt><dd>4</dd></div>
-          <div><dt>sypialnie z łazienkami</dt><dd>3</dd></div>
-          <div><dt>powierzchni mieszkalnej</dt><dd>384<small>–394 m²</small></dd></div>
-        </dl>
-        <div class="sg-wrap cv-price" data-reveal>
-          <div class="cv-price-main">
-            <p class="cv-price-label">Cena przedsprzedażowa od</p>
-            <p class="cv-price-value">24&nbsp;000&nbsp;000 THB</p>
-            <p class="cv-price-pln">≈ 2,64 mln zł</p>
-          </div>
-          <ul class="cv-incl">
-            <li>Basen z przelewem przy salonie</li>
-            <li>Zadaszony garaż</li>
-            <li>Pełne umeblowanie w cenie</li>
-            <li>Płatność w ratach</li>
-          </ul>
         </div>
       </section>
 
-      <section id="wnetrza" class="cv-gallery" aria-labelledby="wnetrza-title">
-        <div class="sg-wrap cv-gallery-head" data-reveal>
-          <p class="sg-eyebrow">Wnętrza</p>
-          <h2 id="wnetrza-title" class="sg-h2">Kamień, drewno <em>i&nbsp;światło</em></h2>
-          <p class="sg-lead">Ściany z kamienia łamanego, sufity z drewnianych listew, marmur w kuchni i łazienkach. Szkło od podłogi do sufitu w każdym pokoju dziennym.</p>
-        </div>
-        <div class="sg-wrap cv-grid">
-          <figure class="cv-tile cv-tile-wide" data-reveal><img src="assets/scenes/front-1280.webp" width="1280" height="720" alt="Willa nocą od frontu: dwie kondygnacje szkła, podświetlony basen i pergola z jadalnią" loading="lazy" decoding="async" /><figcaption>Front i basen</figcaption></figure>
-          <figure class="cv-tile" data-reveal><img src="assets/scenes/salon-1280.webp" width="1280" height="720" alt="Salon z kremową sofą, okrągłymi stolikami i szklaną ścianą na taras" loading="lazy" decoding="async" /><figcaption>Salon</figcaption></figure>
-          <figure class="cv-tile" data-reveal><img src="assets/scenes/kuchnia-1280.webp" width="1280" height="720" alt="Kuchnia z marmurową wyspą i hokerami, obok długi drewniany stół" loading="lazy" decoding="async" /><figcaption>Kuchnia i jadalnia</figcaption></figure>
-          <figure class="cv-tile" data-reveal><img src="assets/scenes/sypialnia-1280.webp" width="1280" height="720" alt="Sypialnia główna z kamienną ścianą i szklanym narożnikiem" loading="lazy" decoding="async" /><figcaption>Sypialnia główna</figcaption></figure>
-          <figure class="cv-tile" data-reveal><img src="assets/gallery/sypialnia-2.webp" width="902" height="508" alt="Druga sypialnia z drewnianym łóżkiem i oknem na zielone wzgórza" loading="lazy" decoding="async" /><figcaption>Druga sypialnia</figcaption></figure>
-          <figure class="cv-tile" data-reveal><img src="assets/scenes/lazienka-1280.webp" width="1280" height="720" alt="Łazienka z wolnostojącą marmurową wanną przy ścianie z kamienia" loading="lazy" decoding="async" /><figcaption>Łazienka z wanną</figcaption></figure>
-          <figure class="cv-tile" data-reveal><img src="assets/gallery/prysznic.webp" width="708" height="402" alt="Prysznic i umywalka z mosiężną baterią przy kamiennej ścianie" loading="lazy" decoding="async" /><figcaption>Prysznic</figcaption></figure>
-          <figure class="cv-tile cv-tile-wide" data-reveal><img src="assets/scenes/bok-1280.webp" width="1280" height="720" alt="Willa o zmierzchu od strony ogrodu, kamienne schody i basen" loading="lazy" decoding="async" /><figcaption>Od strony ogrodu</figcaption></figure>
+      <section id="wnetrza" class="cv-section cv-gallery" aria-labelledby="wnetrza-title">
+        <div class="cv-wrap">
+          <div class="cv-head" data-reveal>
+            <h2 id="wnetrza-title" class="cv-h2">Kamień, drewno i światło.</h2>
+            <p class="cv-sub">Ściany z kamienia łamanego, sufity z drewnianych listew, marmur w kuchni i łazienkach. Szkło od podłogi do sufitu w każdym pokoju dziennym.</p>
+          </div>
+          <div class="cv-grid">
+            <figure class="cv-tile cv-tile-wide" data-reveal><img src="assets/scenes/front-1280.webp" width="1280" height="720" alt="Willa nocą od frontu: dwie kondygnacje szkła, podświetlony basen i pergola z jadalnią" loading="lazy" decoding="async" /><figcaption>Front i basen</figcaption></figure>
+            <figure class="cv-tile" data-reveal><img src="assets/scenes/salon-1280.webp" width="1280" height="720" alt="Salon z kremową sofą, okrągłymi stolikami i szklaną ścianą na taras" loading="lazy" decoding="async" /><figcaption>Salon</figcaption></figure>
+            <figure class="cv-tile" data-reveal><img src="assets/scenes/kuchnia-1280.webp" width="1280" height="720" alt="Kuchnia z marmurową wyspą i hokerami, obok długi drewniany stół" loading="lazy" decoding="async" /><figcaption>Kuchnia i jadalnia</figcaption></figure>
+            <figure class="cv-tile" data-reveal><img src="assets/scenes/sypialnia-1280.webp" width="1280" height="720" alt="Sypialnia główna z kamienną ścianą i szklanym narożnikiem" loading="lazy" decoding="async" /><figcaption>Sypialnia główna</figcaption></figure>
+            <figure class="cv-tile" data-reveal><img src="assets/gallery/sypialnia-2.webp" width="902" height="508" alt="Druga sypialnia z drewnianym łóżkiem i oknem na zielone wzgórza" loading="lazy" decoding="async" /><figcaption>Druga sypialnia</figcaption></figure>
+            <figure class="cv-tile" data-reveal><img src="assets/scenes/lazienka-1280.webp" width="1280" height="720" alt="Łazienka z wolnostojącą marmurową wanną przy ścianie z kamienia" loading="lazy" decoding="async" /><figcaption>Łazienka z wanną</figcaption></figure>
+            <figure class="cv-tile" data-reveal><img src="assets/gallery/prysznic.webp" width="708" height="402" alt="Prysznic i umywalka z mosiężną baterią przy kamiennej ścianie" loading="lazy" decoding="async" /><figcaption>Prysznic</figcaption></figure>
+            <figure class="cv-tile cv-tile-wide" data-reveal><img src="assets/scenes/bok-1280.webp" width="1280" height="720" alt="Willa o zmierzchu od strony ogrodu, kamienne schody i basen" loading="lazy" decoding="async" /><figcaption>Od strony ogrodu</figcaption></figure>
+          </div>
         </div>
       </section>
 
-      <section id="rawai" class="cv-place" aria-labelledby="rawai-title">
-        <span class="cv-place-word" aria-hidden="true">Rawai</span>
-        <div class="sg-wrap cv-place-grid">
+      <section id="rawai" class="cv-section cv-place" aria-labelledby="rawai-title">
+        <div class="cv-wrap cv-place-grid">
           <div data-reveal>
-            <p class="sg-eyebrow">Lokalizacja</p>
-            <h2 id="rawai-title" class="sg-h2">Spokojne <em>południe</em> Phuket</h2>
-            <p class="sg-lead">Rawai to rybacka przystań, plaże Nai Harn i Ya Nui i punkt widokowy Promthep. Mniej turystów niż w Patongu, więcej rodzin i ludzi, którzy zostają na dłużej.</p>
+            <p class="cv-eyebrow">Lokalizacja</p>
+            <h2 id="rawai-title" class="cv-h2">Spokojne południe Phuket.</h2>
+            <p class="cv-sub">Rybacka przystań, plaże Nai Harn i Ya Nui i punkt widokowy Promthep. Mniej turystów niż w Patongu, więcej rodzin i ludzi, którzy zostają na dłużej.</p>
           </div>
           <ul class="cv-dist" data-reveal>
             <li><span>Plaża Nai Harn</span><b>ok. 5 min autem</b></li>
@@ -131,89 +129,84 @@
         </div>
       </section>
 
-      <section id="kontakt" class="rg" aria-labelledby="rg-title">
-        <div class="sg-wrap rg-grid">
-          <div class="rg-copy" data-reveal>
-            <p class="sg-eyebrow">Twins Real Estate</p>
-            <h2 id="rg-title" class="sg-h2">Kupujesz <em>po polsku</em></h2>
-            <p class="sg-lead">Coco Villas sprzedaje Twins Real Estate, polskie biuro na Phuket. Kupujący nie płaci prowizji, a cały proces, od prezentacji po odbiór kluczy, prowadzimy po polsku.</p>
-            <dl class="rg-office">
+      <section id="kontakt" class="cv-section cv-contact" aria-labelledby="rg-title">
+        <div class="cv-wrap cv-contact-grid">
+          <div data-reveal>
+            <p class="cv-eyebrow">Twins Real Estate</p>
+            <h2 id="rg-title" class="cv-h2">Kupujesz po polsku.</h2>
+            <p class="cv-sub">Coco Villas sprzedaje Twins Real Estate, polskie biuro na Phuket. Kupujący nie płaci prowizji, a cały proces, od prezentacji po odbiór kluczy, prowadzimy po polsku.</p>
+            <dl class="cv-office">
               <div><dt>Prowizja dla kupującego</dt><dd>0%</dd></div>
               <div><dt>Prezentacja</dt><dd>na wideorozmowie albo na miejscu w Rawai</dd></div>
             </dl>
           </div>
 
-          <form class="rg-form" name="zapytanie" novalidate data-form>
-            <div class="rg-field" data-field="name">
+          <form class="cv-form" name="zapytanie" novalidate data-form>
+            <div class="cv-field" data-field="name">
               <label for="f-name">Imię i nazwisko</label>
               <input id="f-name" name="name" autocomplete="name" />
-              <p class="rg-err" id="f-name-error" hidden></p>
+              <p class="cv-err" id="f-name-error" hidden></p>
             </div>
-            <div class="rg-field" data-field="email">
+            <div class="cv-field" data-field="email">
               <label for="f-email">E-mail</label>
               <input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" />
-              <p class="rg-err" id="f-email-error" hidden></p>
+              <p class="cv-err" id="f-email-error" hidden></p>
             </div>
-            <div class="rg-field" data-field="phone">
+            <div class="cv-field" data-field="phone">
               <label for="f-phone">Telefon lub WhatsApp</label>
               <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" />
-              <p class="rg-err" id="f-phone-error" hidden></p>
+              <p class="cv-err" id="f-phone-error" hidden></p>
             </div>
-            <div class="rg-field">
+            <div class="cv-field">
               <label for="f-villa">Która willa?</label>
               <select id="f-villa" name="villa">
-                <option value="">Dowolna, chcę porównać</option>
+                <option value="">Jeszcze nie wiem</option>
                 <option value="1">Willa 1</option>
                 <option value="2">Willa 2</option>
                 <option value="3">Willa 3</option>
                 <option value="4">Willa 4</option>
               </select>
             </div>
-            <fieldset class="rg-chips rg-wide">
+            <fieldset class="cv-chips cv-wide">
               <legend>Jak mamy się odezwać?</legend>
               <label><input type="radio" name="channel" value="whatsapp" checked /><span>WhatsApp</span></label>
               <label><input type="radio" name="channel" value="wideo" /><span>Wideorozmowa</span></label>
               <label><input type="radio" name="channel" value="telefon" /><span>Telefon</span></label>
               <label><input type="radio" name="channel" value="email" /><span>E-mail</span></label>
             </fieldset>
-            <div class="rg-field rg-wide">
+            <div class="cv-field cv-wide">
               <label for="f-message">Wiadomość (opcjonalnie)</label>
               <textarea id="f-message" name="message" rows="3" maxlength="800"></textarea>
             </div>
-            <div class="rg-consent rg-wide" data-field="consent">
+            <div class="cv-consent cv-wide" data-field="consent">
               <input id="f-consent" name="consent" type="checkbox" value="tak" />
               <label for="f-consent">Zgadzam się na kontakt w sprawie Coco Villas. Dane służą tylko do odpowiedzi na zapytanie.</label>
-              <p class="rg-err" id="f-consent-error" hidden></p>
+              <p class="cv-err" id="f-consent-error" hidden></p>
             </div>
-            <button type="submit" class="rg-submit rg-wide"><span>Zapytaj o willę</span><i aria-hidden="true"></i></button>
+            <button type="submit" class="cv-btn cv-wide">Zapytaj o willę</button>
           </form>
 
-          <div class="rg-done" role="status" hidden data-form-done>
-            <p class="rg-done-title" data-done-title>Dziękujemy.</p>
+          <div class="cv-done" role="status" hidden data-form-done>
+            <p class="cv-done-title" data-done-title>Dziękujemy.</p>
             <p data-done-text>Odezwiemy się w ciągu jednego dnia roboczego.</p>
-            <p class="rg-done-note">To wersja koncepcyjna strony, więc formularz niczego nie wysłał.</p>
+            <p class="cv-done-note">To wersja koncepcyjna strony, więc formularz niczego nie wysłał.</p>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="ft">
-      <div class="sg-wrap">
-        <div class="ft-top">
-          <a href="#spacer" class="sg-brand">
-            <span class="sg-brand-text"><span class="sg-brand-word">Coco Villas</span><span class="sg-brand-sub">Rawai · Phuket</span></span>
-          </a>
-          <nav class="ft-nav" aria-label="Stopka">
+    <footer class="cv-footer">
+      <div class="cv-wrap">
+        <p class="cv-footer-note">Koncept strony. Wizualizacje i dane pochodzą z ogłoszenia Twins Real Estate o Coco Villas, a przejścia kamery wygenerowano na ich podstawie. Strona nie jest ofertą handlową.</p>
+        <div class="cv-footer-row">
+          <p>Coco Villas · Rawai, Phuket · sprzedaż: Twins Real Estate</p>
+          <nav class="cv-footer-nav" aria-label="Stopka">
             <a href="#spacer">Spacer</a>
             <a href="#willa">Willa</a>
             <a href="#wnetrza">Wnętrza</a>
             <a href="#rawai">Rawai</a>
-            <a href="#kontakt">Twins Real Estate</a>
+            <a href="#kontakt">Kontakt</a>
           </nav>
-          <a href="#kontakt" class="sg-cta">Zapytaj o willę</a>
-        </div>
-        <div class="ft-note">
-          <p>Koncept strony. Wizualizacje i dane pochodzą z ogłoszenia Twins Real Estate o Coco Villas, a przejścia kamery wygenerowano na ich podstawie. Strona nie jest ofertą handlową.</p>
           <p>Koncept strony: <a href="https://dawid-webdesign.pl" rel="noopener">Dawid Webdesign</a></p>
         </div>
       </div>
