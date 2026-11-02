@@ -459,6 +459,24 @@
     });
   }
 
+  // Interiors list: hovering a row shows its photo in the middle of the list.
+  function initList() {
+    const list = document.querySelector("[data-list]");
+    const preview = document.querySelector("[data-preview] img");
+    if (!list || !preview || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    const rows = list.querySelectorAll("li[data-img]");
+    rows.forEach((row) => {
+      row.addEventListener("mouseenter", () => {
+        if (preview.getAttribute("src") !== row.dataset.img) preview.src = row.dataset.img;
+        rows.forEach((other) => (other.dataset.on = String(other === row)));
+        list.dataset.hover = "true";
+      });
+    });
+    list.addEventListener("mouseleave", () => {
+      list.dataset.hover = "false";
+    });
+  }
+
   function initReveal() {
     const items = document.querySelectorAll("[data-reveal]");
     if (!("IntersectionObserver" in window)) {
@@ -480,5 +498,6 @@
 
   initWalk();
   initForm();
+  initList();
   initReveal();
 })();
