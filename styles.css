@@ -72,7 +72,6 @@ textarea {
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 56px;
   background: var(--cv-bg);
 }
 
@@ -201,7 +200,7 @@ html {
   font-weight: 500;
 }
 
-/* ---------- concept bar and navigation ---------- */
+/* ---------- concept bar ---------- */
 
 .cv-concept {
   padding: 8px var(--cv-gutter);
@@ -216,123 +215,34 @@ html {
   color: var(--cv-ink);
 }
 
-.cv-nav {
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  background: rgba(255, 255, 255, 0.8);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.cv-nav-in {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  width: min(var(--cv-max), calc(100% - 2 * var(--cv-gutter)));
-  height: 52px;
-  margin-inline: auto;
-}
-
-.cv-brand {
-  color: var(--cv-ink);
-  font-size: 21px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  text-decoration: none;
-}
-
-.cv-nav-links {
-  display: flex;
-  gap: 24px;
-  margin: 0 0 0 auto;
-  list-style: none;
-}
-
-.cv-nav-links a {
-  color: var(--cv-ink);
-  font-size: 13px;
-  letter-spacing: -0.01em;
-  text-decoration: none;
-  opacity: 0.8;
-  transition: opacity 0.2s ease;
-}
-
-.cv-nav-links a:hover {
-  opacity: 1;
-}
-
 /* ---------- villa walk-through ---------- */
 
+/* The house fills the first screen, the navigation and the room caption sit on the photo,
+   as in the first version of the page. */
 .tr {
-  padding-bottom: clamp(72px, 9vw, 120px);
-}
-
-/* The whole house, edge to edge and uncropped, is the first thing on the page. The title sits
-   on the evening sky and steps aside once the camera moves on. */
-.tr-hero {
   position: relative;
-}
-
-.tr-card {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  aspect-ratio: 16 / 9;
   background: #111;
-  isolation: isolate;
 }
 
-.tr-shade {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  pointer-events: none;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.3) 30%, rgba(0, 0, 0, 0) 52%);
-  transition: opacity 0.6s ease;
+.tr-stage {
+  position: relative;
+  height: calc(100dvh - 33px);
+  min-height: 600px;
+  overflow: hidden;
+  container-type: size;
+  background: #111;
 }
 
-.tr-head {
-  position: absolute;
-  top: clamp(32px, 5.5vw, 88px);
-  left: 50%;
-  z-index: 7;
-  width: min(760px, calc(100% - 2 * var(--cv-gutter)));
-  color: #ffffff;
-  text-align: center;
-  text-shadow: 0 1px 24px rgba(0, 0, 0, 0.35);
-  pointer-events: none;
-  transform: translateX(-50%);
-  transition:
-    opacity 0.6s ease,
-    transform 0.6s var(--cv-ease);
-}
-
-.tr-head .cv-eyebrow {
-  color: var(--cv-gold-hi);
-}
-
-.tr-head .cv-sub {
-  margin-inline: auto;
-  color: rgba(255, 255, 255, 0.86);
-}
-
-.tr:not([data-scene="bok"]) .tr-head,
-.tr[data-busy="true"] .tr-head {
-  opacity: 0;
-  transform: translate(-50%, -12px);
-}
-
-.tr:not([data-scene="bok"]) .tr-shade,
-.tr[data-busy="true"] .tr-shade {
-  opacity: 0;
-}
-
+/* The scene keeps the 16:9 frame and covers the stage; spots share its coordinates. */
 .tr-layers,
 .tr-spots {
+  --sw: max(100cqw, calc(100cqh * 16 / 9));
+  --sh: calc(var(--sw) * 9 / 16);
   position: absolute;
-  inset: 0;
+  top: calc((100cqh - var(--sh)) / 2);
+  left: calc((100cqw - var(--sw)) / 2);
+  width: var(--sw);
+  height: var(--sh);
 }
 
 .tr-layer {
@@ -356,6 +266,71 @@ html {
 video.tr-layer {
   z-index: 2;
   transition: opacity 0.25s linear;
+}
+
+.tr-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 20%),
+    linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.3) 32%, rgba(0, 0, 0, 0) 56%);
+}
+
+/* Navigation on the photo: white type, the gold pill on the right. */
+.tr-bar {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 20;
+}
+
+.cv-nav-in {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  height: 64px;
+  padding-inline: var(--cv-gutter);
+}
+
+.cv-brand {
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.cv-brand span {
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.cv-brand small {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12px;
+  letter-spacing: -0.01em;
+}
+
+.cv-nav-links {
+  display: flex;
+  gap: 26px;
+  margin: 0 0 0 auto;
+  list-style: none;
+}
+
+.cv-nav-links a {
+  color: #ffffff;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.cv-nav-links a:hover {
+  opacity: 1;
 }
 
 .tr-spots {
@@ -510,78 +485,30 @@ video.tr-layer {
   left: auto;
 }
 
-/* Below the picture: the room switcher, then the room's caption, all centred. */
-.tr-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 28px;
-  text-align: center;
-}
-
-.tr-map {
-  order: -1;
-  display: flex;
-  gap: 2px;
-  max-width: 100%;
-  padding: 4px;
-  overflow-x: auto;
-  border-radius: 980px;
-  background: var(--cv-bg-2);
-  list-style: none;
-  scrollbar-width: none;
-}
-
-.tr-map::-webkit-scrollbar {
-  display: none;
-}
-
-.tr-map button {
-  padding: 8px 16px;
-  border: 0;
-  border-radius: 980px;
-  background: transparent;
-  color: var(--cv-mute);
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-  cursor: pointer;
-  transition:
-    background-color 0.25s ease,
-    color 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.tr-map button:hover {
-  color: var(--cv-ink);
-}
-
-.tr-map button[aria-current="step"] {
-  background: #ffffff;
-  color: var(--cv-ink);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
-}
-
+/* The room caption, bottom left on the photo. */
 .tr-caption {
-  max-width: 640px;
-  padding-top: 32px;
-  transition: opacity 0.3s ease;
+  position: absolute;
+  bottom: clamp(28px, 6vh, 64px);
+  left: var(--cv-gutter);
+  z-index: 10;
+  width: min(560px, calc(100% - 2 * var(--cv-gutter)));
+  color: #ffffff;
+  transition: opacity 0.4s ease;
 }
 
 .tr-count {
-  color: var(--cv-gold-text);
+  color: var(--cv-gold-hi);
   font-size: 14px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
 
 .tr-title {
-  margin-top: 6px;
-  font-size: clamp(32px, 3.4vw, 44px);
+  margin-top: 8px;
+  font-size: clamp(44px, 5vw, 76px);
   font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -0.026em;
+  line-height: 1.02;
+  letter-spacing: -0.032em;
   outline: none;
   animation: tr-rise 0.6s var(--cv-ease) both;
 }
@@ -594,7 +521,7 @@ video.tr-layer {
 @keyframes tr-rise {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -603,8 +530,9 @@ video.tr-layer {
 }
 
 .tr-text {
-  margin-top: 12px;
-  color: var(--cv-mute);
+  max-width: 30em;
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.86);
   font-size: 19px;
   line-height: 1.42;
 }
@@ -616,7 +544,7 @@ video.tr-layer {
 .tr-actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  align-items: center;
   gap: 12px 20px;
   margin-top: 24px;
 }
@@ -629,7 +557,7 @@ video.tr-layer {
   border: 0;
   border-radius: 980px;
   background: transparent;
-  color: var(--cv-gold-text);
+  color: #ffffff;
   font-size: 17px;
   font-weight: 500;
   letter-spacing: -0.016em;
@@ -639,7 +567,13 @@ video.tr-layer {
     color 0.25s ease;
 }
 
-.tr-btn:hover {
+.tr-btn[data-kind="back"] {
+  padding-inline: 4px;
+  opacity: 0.85;
+}
+
+.tr-btn[data-kind="back"]:hover {
+  opacity: 1;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -651,7 +585,6 @@ video.tr-layer {
 
 .tr-btn[data-kind="go"]:hover {
   background: var(--cv-gold-hi);
-  text-decoration: none;
 }
 
 .tr-btn[data-loading="true"] {
@@ -664,14 +597,64 @@ video.tr-layer {
   }
 }
 
-.tr[data-busy="true"] .tr-spots {
-  opacity: 0;
-  pointer-events: none;
+/* Room list, bottom right: one row per room, the current one in white with a gold line. */
+.tr-map {
+  position: absolute;
+  right: var(--cv-gutter);
+  bottom: clamp(28px, 6vh, 64px);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  list-style: none;
+  transition: opacity 0.4s ease;
 }
 
+.tr-map button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  width: 100%;
+  padding: 6px 0;
+  border: 0;
+  background: none;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.tr-map button::after {
+  content: "";
+  width: 16px;
+  height: 2px;
+  border-radius: 1px;
+  background: currentColor;
+  transition:
+    width 0.4s var(--cv-ease),
+    background-color 0.25s ease;
+}
+
+.tr-map button:hover {
+  color: #ffffff;
+}
+
+.tr-map button[aria-current="step"] {
+  color: #ffffff;
+}
+
+.tr-map button[aria-current="step"]::after {
+  width: 40px;
+  background: var(--cv-gold);
+}
+
+.tr[data-busy="true"] .tr-spots,
 .tr[data-busy="true"] .tr-caption,
 .tr[data-busy="true"] .tr-map {
-  opacity: 0.45;
+  opacity: 0;
   pointer-events: none;
 }
 
@@ -1113,8 +1096,58 @@ video.tr-layer {
 /* ---------- smaller screens ---------- */
 
 @media (max-width: 1023px) {
-  .tr-spots {
+  /* Phones and tablets: the whole photo on top with the navigation on it, the caption below. */
+  .tr-stage {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    container-type: normal;
+  }
+
+  .tr-layers {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+
+  .tr-scrim {
+    inset: 0 0 auto;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 40%);
+  }
+
+  .tr-spots,
+  .tr-map {
     display: none;
+  }
+
+  .tr-caption {
+    position: static;
+    width: auto;
+    padding: 28px var(--cv-gutter) 44px;
+    background: var(--cv-bg);
+    color: var(--cv-ink);
+  }
+
+  .tr-count {
+    color: var(--cv-gold-text);
+  }
+
+  .tr-text {
+    color: var(--cv-mute);
+  }
+
+  .tr-btn[data-kind="back"] {
+    color: var(--cv-gold-text);
+  }
+
+  .tr[data-busy="true"] .tr-caption {
+    opacity: 0.45;
   }
 
   .cv-price,
@@ -1125,11 +1158,16 @@ video.tr-layer {
 }
 
 @media (max-width: 767px) {
-  .cv-nav-links {
+  .cv-nav-links,
+  .cv-brand small {
     display: none;
   }
 
-  .cv-nav .cv-btn {
+  .cv-nav-in {
+    height: 52px;
+  }
+
+  .cv-nav-in .cv-btn {
     margin-left: auto;
   }
 
@@ -1137,42 +1175,8 @@ video.tr-layer {
     display: none;
   }
 
-  /* Phones: the whole house on top, the title below it, always visible. */
-  .tr-shade {
-    display: none;
-  }
-
-  .tr-head,
-  .tr:not([data-scene="bok"]) .tr-head,
-  .tr[data-busy="true"] .tr-head {
-    position: static;
-    width: auto;
-    padding: 28px var(--cv-gutter) 4px;
-    color: var(--cv-ink);
-    text-shadow: none;
-    opacity: 1;
-    transform: none;
-  }
-
-  .tr-head .cv-eyebrow {
-    color: var(--cv-gold-text);
-  }
-
-  .tr-head .cv-sub {
-    color: var(--cv-mute);
-  }
-
-  .tr-head .cv-display {
-    font-size: 48px;
-  }
-
-  .tr-map {
-    align-self: stretch;
-    border-radius: 18px;
-  }
-
-  .tr-caption {
-    padding-top: 24px;
+  .tr-title {
+    font-size: 40px;
   }
 
   .tr-text {
