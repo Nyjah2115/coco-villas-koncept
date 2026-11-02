@@ -12,7 +12,7 @@ W tym folderze uruchom `python3 -m http.server 8000` i otwórz http://localhost:
 
 - `index.html`: treść strony
 - `styles.css`: wygląd: hero z pierwszej wersji (ciemny, Cormorant Garamond i Manrope), reszta w ciepłym stylu studia (krem i brąz, Helvetica Neue / Inter Tight)
-- `app.js`: spacer po willi (miejsca, punkty i przejścia w `SCENES` i `CLIPS`), formularz
+- `app.js`: spacer po willi (miejsca, punkty i przejścia w `SCENES` i `CLIPS`), formularz, lista wnętrz i animacje sekcji (`initMotion`: płynne przewijanie Lenis, nagłówki słowo po słowie, odsłanianie zdjęć, paralaksa, rysowane linie; wyłączone przy „ogranicz ruch”)
 - `assets/scenes`: zdjęcia sześciu miejsc spaceru (klatki z przejść, 1920 i 1280 px)
 - `assets/video`: przejścia kamery do przodu i od tyłu (`-r`), wersja na komputer i na telefon (`-m`)
 - `assets/gallery`: dwa ujęcia bez przejść (lista wnętrz pokazuje zdjęcie po najechaniu na wiersz)

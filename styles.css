@@ -801,11 +801,14 @@ video.tr-layer {
   overflow: hidden;
 }
 
+/* The photo is taller than its frame so it can drift with the scroll. */
 .bc-split-photo img {
   position: absolute;
-  inset: 0;
+  top: -8%;
+  left: 0;
   width: 100%;
-  height: 100%;
+  height: 116%;
+  max-width: none;
   object-fit: cover;
 }
 
@@ -962,6 +965,7 @@ video.tr-layer {
 .bc-dark-photo {
   width: min(100%, 360px);
   margin: 0;
+  overflow: hidden;
 }
 
 .bc-dark-photo img {
@@ -1030,12 +1034,19 @@ video.tr-layer {
 }
 
 .bc-contact-photo {
+  position: relative;
   margin: 0;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
 }
 
 .bc-contact-photo img {
+  position: absolute;
+  top: -8%;
+  left: 0;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 116%;
+  max-width: none;
   object-fit: cover;
 }
 
@@ -1272,6 +1283,140 @@ video.tr-layer {
   gap: 16px;
   padding: 14px 0 16px;
   font-size: 14px;
+}
+
+
+/* ---------- motion below the walk-through (only with .bc-anim, i.e. motion allowed) ---------- */
+
+/* Headings: each word rises from behind its own mask. */
+.bc-w {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+  vertical-align: top;
+}
+
+.bc-w > span {
+  display: inline-block;
+}
+
+.bc-anim .bc-w > span {
+  transform: translateY(112%);
+  transition: transform 1.1s var(--bc-ease) calc(var(--i) * 45ms);
+}
+
+.bc-anim [data-in] .bc-w > span {
+  transform: none;
+}
+
+/* Huge place names: letters rise one after another. */
+.bc-l {
+  display: inline-block;
+}
+
+.bc-anim .bc-giant .bc-l {
+  opacity: 0;
+  transform: translateY(60%);
+  transition:
+    opacity 0.9s ease calc(var(--i) * 60ms),
+    transform 1.3s var(--bc-ease) calc(var(--i) * 60ms);
+}
+
+.bc-anim .bc-giant[data-in] .bc-l {
+  opacity: 1;
+  transform: none;
+}
+
+/* Photos: a wipe from below while the picture settles from a slight zoom. */
+.bc-anim .bc-unveil {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1.4s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.bc-anim .bc-unveil img {
+  transform: scale(1.16);
+  transition: transform 2s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.bc-anim .bc-unveil[data-in] {
+  clip-path: inset(0 0 0 0);
+}
+
+.bc-anim .bc-unveil[data-in] img {
+  transform: none;
+}
+
+/* Rows come in one after another and their rules draw from the left. */
+.bc-anim .bc-stagger > * {
+  position: relative;
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.8s ease calc(var(--i) * 70ms),
+    transform 1s var(--bc-ease) calc(var(--i) * 70ms);
+}
+
+.bc-anim .bc-stagger[data-in] > * {
+  opacity: 1;
+  transform: none;
+}
+
+.bc-anim .bc-stagger[data-done] > * {
+  transition-delay: 0s;
+}
+
+.bc-anim .bc-rows div,
+.bc-anim .bc-list-rows li,
+.bc-anim .bc-dist li {
+  border-top-color: transparent;
+}
+
+.bc-anim .bc-rows div::before,
+.bc-anim .bc-list-rows li::before,
+.bc-anim .bc-dist li::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: var(--bc-line);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1.3s var(--bc-ease) calc(var(--i) * 70ms + 120ms);
+}
+
+.bc-anim .bc-dist li::before {
+  background: var(--bc-on-dark-line);
+}
+
+.bc-anim .bc-stagger[data-in] > *::before {
+  transform: scaleX(1);
+}
+
+/* Small labels and copy simply fade up. */
+.bc-anim .bc-fade {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 1s ease 0.15s,
+    transform 1.1s var(--bc-ease) 0.15s;
+}
+
+.bc-anim .bc-fade[data-in] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Smooth scrolling (Lenis) takes over from the browser's own. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
 }
 
 /* ---------- smaller screens ---------- */

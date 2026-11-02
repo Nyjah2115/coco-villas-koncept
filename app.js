@@ -477,6 +477,119 @@
     });
   }
 
+  // Motion for everything below the walk-through: smooth scrolling, headings that rise word
+  // by word, photos unveiled from below with a little parallax, rows and rules drawn in turn,
+  // and the huge place names rising letter by letter. Nothing of it runs with reduced motion.
+  function initMotion() {
+    if (!motionOk()) return;
+    const root = document.documentElement;
+    root.classList.add("bc-anim");
+
+    let lenis = null;
+    if (window.Lenis) {
+      lenis = new window.Lenis({ lerp: 0.1, smoothWheel: true });
+      window.lenis = lenis;
+    }
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const target = document.querySelector(link.getAttribute("href"));
+        if (!target || !lenis) return;
+        event.preventDefault();
+        lenis.scrollTo(target, { duration: 1.4 });
+      });
+    });
+
+    // Wrap each word (or letter) in a masked span; --i staggers them.
+    function split(el, byLetter) {
+      const words = el.textContent.trim().split(/ +/);
+      el.setAttribute("aria-label", el.textContent.trim());
+      const parts = [];
+      let i = 0;
+      words.forEach((word, w) => {
+        if (byLetter) {
+          for (const ch of word) {
+            const letter = document.createElement("span");
+            letter.className = "bc-l";
+            letter.style.setProperty("--i", String(i++));
+            letter.textContent = ch;
+            parts.push(letter);
+          }
+        } else {
+          const mask = document.createElement("span");
+          mask.className = "bc-w";
+          const inner = document.createElement("span");
+          inner.style.setProperty("--i", String(i++));
+          inner.textContent = word;
+          mask.appendChild(inner);
+          parts.push(mask);
+        }
+        if (w < words.length - 1) parts.push(document.createTextNode(" "));
+      });
+      parts.forEach((part) => part.nodeType === 1 && part.setAttribute("aria-hidden", "true"));
+      el.replaceChildren(...parts);
+    }
+
+    const watched = [];
+    const watch = (el) => el && watched.push(el);
+
+    document.querySelectorAll(".bc-statement, .bc-footer-title").forEach((el) => {
+      split(el, false);
+      watch(el);
+    });
+    document.querySelectorAll(".bc-giant").forEach((el) => {
+      split(el, true);
+      watch(el);
+    });
+    document.querySelectorAll(".bc-split-photo, .bc-dark-photo, .bc-contact-photo").forEach((el) => {
+      el.classList.add("bc-unveil");
+      watch(el);
+    });
+    document.querySelectorAll(".bc-rows, .bc-list-rows, .bc-dist, .bc-cols, .bc-footer-grid").forEach((el) => {
+      el.classList.add("bc-stagger");
+      Array.from(el.children).forEach((child, i) => child.style.setProperty("--i", String(i)));
+      watch(el);
+    });
+    document
+      .querySelectorAll(".bc-corner, .bc-dark-copy > .bc-text, .bc-contact-copy > .bc-label, .bc-contact-copy > .bc-text, .bc-form, .bc-footer-meta")
+      .forEach((el) => {
+        el.classList.add("bc-fade");
+        watch(el);
+      });
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          const el = entry.target;
+          el.setAttribute("data-in", "");
+          io.unobserve(el);
+          // Once the entrance has played, drop the stagger delays so hover effects react at once.
+          if (el.classList.contains("bc-stagger")) window.setTimeout(() => el.setAttribute("data-done", ""), 2000);
+        }
+      },
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.08 },
+    );
+    watched.forEach((el) => io.observe(el));
+
+    // Parallax: photos drift a little inside their frames, the huge words slide sideways.
+    const drifts = [
+      ...Array.from(document.querySelectorAll(".bc-split-photo img, .bc-contact-photo img"), (el) => ({ el, axis: "y", k: -0.1 })),
+      ...Array.from(document.querySelectorAll(".bc-giant"), (el) => ({ el, axis: "x", k: 0.14 })),
+    ];
+    function frame(time) {
+      if (lenis) lenis.raf(time);
+      const vh = window.innerHeight;
+      for (const d of drifts) {
+        const rect = d.el.getBoundingClientRect();
+        if (rect.bottom < -200 || rect.top > vh + 200) continue;
+        const offset = (rect.top + rect.height / 2 - vh / 2) * d.k;
+        d.el.style.translate = d.axis === "y" ? `0 ${offset.toFixed(1)}px` : `${offset.toFixed(1)}px 0`;
+      }
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
   function initReveal() {
     const items = document.querySelectorAll("[data-reveal]");
     if (!("IntersectionObserver" in window)) {
@@ -499,5 +612,6 @@
   initWalk();
   initForm();
   initList();
+  initMotion();
   initReveal();
 })();
