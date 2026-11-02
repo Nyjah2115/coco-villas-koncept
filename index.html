@@ -17,42 +17,43 @@
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <!-- Apple devices use their own SF Pro; everyone else gets Inter, the closest open match. -->
+    <!-- The walk-through keeps the first version's Cormorant Garamond and Manrope; the rest of the page uses SF Pro on Apple devices and Inter elsewhere. -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
-    <link rel="stylesheet" href="styles.css?v=4" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@300;400;500;600&family=Inter:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="styles.css?v=5" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-    <script src="app.js?v=4" defer></script>
+    <script src="app.js?v=5" defer></script>
   </head>
   <body class="cv">
     <p class="cv-concept">Koncept strony od <a href="https://dawid-webdesign.pl" rel="noopener">Dawid Webdesign</a><span> · wizualizacje i dane: Coco Villas, Twins Real Estate</span></p>
 
     <main>
-      <section id="spacer" class="tr" data-busy="false" aria-labelledby="hero-title">
-        <h1 id="hero-title" class="cv-sr">Coco Villas, prywatne wille z basenem w Rawai na Phuket</h1>
+      <section id="spacer" class="tr" data-busy="false" aria-label="Spacer po willi">
         <div class="tr-stage">
           <div class="tr-layers" data-layers></div>
           <div class="tr-scrim" aria-hidden="true"></div>
           <div class="tr-spots" data-spots></div>
 
           <div class="tr-bar">
-            <nav class="cv-nav-in" aria-label="Nawigacja główna">
-              <a href="#spacer" class="cv-brand"><span>Coco Villas</span><small>Rawai · Phuket</small></a>
-              <ul class="cv-nav-links">
+            <nav class="sg-nav" aria-label="Nawigacja główna">
+              <a href="#spacer" class="sg-brand">
+                <span class="sg-brand-text"><span class="sg-brand-word">Coco Villas</span><span class="sg-brand-sub">Rawai · Phuket</span></span>
+              </a>
+              <ul class="sg-nav-links">
                 <li><a href="#willa">Willa</a></li>
                 <li><a href="#wnetrza">Wnętrza</a></li>
                 <li><a href="#rawai">Rawai</a></li>
                 <li><a href="#kontakt">Twins</a></li>
               </ul>
-              <a href="#kontakt" class="cv-btn cv-btn-sm">Zapytaj o willę</a>
+              <a href="#kontakt" class="sg-cta">Zapytaj o willę</a>
             </nav>
           </div>
 
           <div class="tr-caption">
             <p class="tr-count" aria-hidden="true"><span data-count>01</span> / <span data-total>06</span></p>
-            <h2 class="tr-title" data-title tabindex="-1">Od strony ogrodu</h2>
+            <h1 class="tr-title" data-title tabindex="-1">Od strony ogrodu</h1>
             <p class="tr-text" data-text></p>
             <p class="tr-text tr-notes" data-notes hidden></p>
             <div class="tr-actions" data-actions></div>
